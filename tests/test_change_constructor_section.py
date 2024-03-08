@@ -1,17 +1,15 @@
-from selenium.webdriver.common.by import By
-from selenium import webdriver
+from const import Const
+
 
 class TestChangeSection:
 
-    def test_change_constructor_section(self):
-        driver = webdriver.Chrome()
-        driver.get("https://stellarburgers.nomoreparties.site/")
+    def test_change_constructor_section(self, driver, page):
+        #Проверка, что работают переходы к разделам в конструкторе:
+        driver.get(Const.MAIN_PAGE)
 
-        driver.find_element(By.XPATH, '//span[text()="Соусы"]').click()
-        assert driver.find_element(By.XPATH, '//h2[text()="Соусы"]')
-        driver.find_element(By.XPATH, '//span[text()="Начинки"]').click()
-        assert driver.find_element(By.XPATH, '//h2[text()="Начинки"]')
-        driver.find_element(By.XPATH, '//span[text()="Булки"]').click()
-        assert driver.find_element(By.XPATH, '//h2[text()="Булки"]')
-
-        driver.quit()
+        driver.find_element(*page.sauce_constructor).click()
+        assert driver.find_element(*page.header_sauce_constructor)
+        driver.find_element(*page.filling_constructor).click()
+        assert driver.find_element(*page.header_filling_constructor)
+        driver.find_element(*page.bread_constructor).click()
+        assert driver.find_element(*page.header_bread_constructor)
