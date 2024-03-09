@@ -7,7 +7,10 @@ from const import Const
 class TestLogOutInAccountPage:
 
     def test_check_button_log_out_main_page(self, driver, page):
+        #Проверка выхода по кнопке «Выйти» в личном кабинете.
         driver.get(Const.LOGIN_PAGE)
+        WebDriverWait(driver, 3).until(
+            expected_conditions.visibility_of_element_located((page.header_log_in_page)))
 
         driver.find_element(*page.input_email).send_keys(Const.EMAIL)
         driver.find_element(*page.input_password).send_keys(Const.PASSWORD)

@@ -30,7 +30,7 @@ class TestRegistration:
 
     def test_check_incorrect_password(self, driver, page):
         driver.get(Const.REGISTRATION_PAGE)
-
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((page.button_register)))
         driver.find_element(*page.input_name).send_keys(Const.NAME)
         email = generate_random_email()
         driver.find_element(*page.input_email).send_keys(email)

@@ -8,7 +8,7 @@ class TestTransfetAccountPage:
     def test_check_transfer_to_account_page(self, driver, page):
         #Проверка перехода по клику на «Личный кабинет».
         driver.get(Const.MAIN_PAGE)
-        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((page.button_personal_account)))
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((page.button_log_in_account)))
         driver.find_element(*page.button_personal_account).click()
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((page.button_log_in)))
         assert driver.find_element(*page.header_log_in_page)
@@ -16,6 +16,7 @@ class TestTransfetAccountPage:
     def test_check_transfer_to_constructor_from_account_page(self, driver, page):
         # Проверка перехода из личного кабинета в конструктор по клику на «Конструктоо».
         driver.get(Const.LOGIN_PAGE)
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((page.header_log_in_page)))
         driver.find_element(*page.input_email).send_keys(Const.EMAIL)
         driver.find_element(*page.input_password).send_keys(Const.PASSWORD)
         driver.find_element(*page.button_log_in).click()
@@ -29,6 +30,7 @@ class TestTransfetAccountPage:
     def test_check_tap_logo_transfer_to_constructor_from_account_page(self, driver, page):
         # Проверка перехода из личного кабинета в конструктор по клику на логотип сайта
         driver.get(Const.LOGIN_PAGE)
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((page.header_log_in_page)))
         driver.find_element(*page.input_email).send_keys(Const.EMAIL)
         driver.find_element(*page.input_password).send_keys(Const.PASSWORD)
         driver.find_element(*page.button_log_in).click()

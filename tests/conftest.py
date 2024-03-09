@@ -14,4 +14,3 @@ def driver():
 def page():
     page = LocatorsPage()
     return page
-
