@@ -29,6 +29,7 @@ class TestRegistration:
         assert email == profile_email
 
     def test_check_incorrect_password(self, driver, page):
+        #Проверка ошибки при вводе некорректного пароля
         driver.get(Const.REGISTRATION_PAGE)
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((page.button_register)))
         driver.find_element(*page.input_name).send_keys(Const.NAME)
