@@ -116,3 +116,8 @@ class LocatorsPage:
     def header_bread_constructor(self):
         """Раздел «Булки» в Конструкторе"""
         return By.XPATH, "//h2[text()='Булки']"
+
+    @property
+    def select_tab_constructor(self):
+        """Выбранный таб в конструкторе"""
+        return By.XPATH, ".//div[contains(@class, 'current')]/span"
